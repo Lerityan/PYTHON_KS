@@ -2,6 +2,7 @@ import random as rnd
 import time
 import math
 
+
 class QAWay():
 
     def by_year_money_save(age):
@@ -49,7 +50,6 @@ class QAWay():
                 bank -= 2000
                 print("You have child")
 
-
             if haveChild:
                 childAge += 1
 
@@ -66,4 +66,24 @@ class QAWay():
         print("You died")
 
     def by_exp_and_start_salary(exp_age, start_salary):
-        print("Sorry, you died")
+        auto = 1
+        perf = 1
+        web = 1
+        mobile = 1
+        english = 1
+        grade = 1
+        salary = start_salary
+        for year in range(exp_age):
+            print(year, " year of work, salary ", '%.1f' % salary)
+            auto += rnd.randint(0, 2)
+            perf += rnd.randint(0, 2)
+            web += rnd.randint(0, 2)
+            mobile += rnd.randint(0, 2)
+            english += rnd.randint(0, 2)
+            sm = (auto + perf + web + mobile + english) / 5
+            salary = start_salary * grade * sm
+
+            if (sm > 3) and (sm <= 6):
+                grade = 1.5
+            elif sm > 6:
+                grade = 2.5

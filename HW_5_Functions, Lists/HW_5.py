@@ -47,7 +47,7 @@ arf.compare_sum_group_with_100(five_star)
 qa.by_year_money_save(18)
 
 # 15 (after 30)
-qa.by_exp_and_start_salary(5, 1000)
+qa.by_exp_and_start_salary(8, 500)
 
 # 16
 print(data.create_name_list(70))
