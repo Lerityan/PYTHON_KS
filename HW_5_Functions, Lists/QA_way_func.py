@@ -1,11 +1,69 @@
-
-
+import random as rnd
+import time
+import math
 
 class QAWay():
 
-
     def by_year_money_save(age):
-        print("Sorry, you died")
+        live = True
+        married = False
+        haveChild = False
+        childAge = 0
+        speed = 0.15
+
+        if age < 18:
+            bank = 0
+        elif age > 75:
+            live = False
+        else:
+            bank = int(age) * 200
+
+        while live:
+            print("your age = ", age, ",your bank =", '%.1f' % bank)
+            if (rnd.randint(0, 1000) >= 900) and (married is False):
+                married = True
+                bank -= 1000
+                speed *= 1.5
+                print("You married")
+            if (rnd.randint(0, 1000) >= 950) and (married is True):
+                married = False
+                bank = bank * 0.5
+                speed *= 0.7
+                print("You divorced")
+
+            if rnd.randint(0, 10000) >= 9900:
+                live = False
+
+            if age % 10 == 0:
+                speed *= 1.1
+
+            if age > 65:
+                speed = -0.2
+
+            if age > 90:
+                live = False
+
+            if (rnd.randint(0, 10000) >= 7000) and (haveChild is False):
+                haveChild = True
+                speed *= 0.2
+                bank -= 2000
+                print("You have child")
+
+
+            if haveChild:
+                childAge += 1
+
+            if childAge == 18:
+                print("Child is grow up")
+                haveChild = False
+                childAge = 0
+                speed *= 2
+
+            bank = bank + math.fabs(bank * speed)
+            age += 1
+            time.sleep(1)
+
+        print("You died")
 
     def by_exp_and_start_salary(exp_age, start_salary):
         print("Sorry, you died")
