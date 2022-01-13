@@ -18,6 +18,9 @@ print_var_type(varList)
 varTuple = tuple(varList)
 print_var_type(varTuple)
 
+varSet = set(varList)
+print_var_type(varSet)
+
 varFrozenSet = frozenset(varList)
 print_var_type(varFrozenSet)
 
