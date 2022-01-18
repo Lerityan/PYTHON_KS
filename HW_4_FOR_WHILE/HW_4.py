@@ -25,7 +25,7 @@ while count < range_count:
 
 while run:
     if count == range_count:
-        print("STOP")
+        print("STOP", count)
         break
     if count == 3:
         print("Step = ", count, "if body")
