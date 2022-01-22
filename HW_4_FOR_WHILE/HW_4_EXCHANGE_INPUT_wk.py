@@ -3,9 +3,9 @@ import re
 from Exchange_tools import Currency
 
 
-
 def buried():
-    print("┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈┈╱▔▔▔╲\n┈┈┈┈┈┈┈┈┈┈┈▎┊╋┊▕\n┈┈┈┈┈┈┈┈┈┈┈▎┈┃┈▕\n┈┈┈┈┈┈┈┈┈┈┈▎┈┈┈▕\n▅▅▅▅▆▆▆▆▆▆▆▇▇▇▇▇")
+    print(
+        "┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n┈┈┈┈┈┈┈┈┈┈┈╱▔▔▔╲\n┈┈┈┈┈┈┈┈┈┈┈▎┊╋┊▕\n┈┈┈┈┈┈┈┈┈┈┈▎┈┃┈▕\n┈┈┈┈┈┈┈┈┈┈┈▎┈┈┈▕\n▅▅▅▅▆▆▆▆▆▆▆▇▇▇▇▇")
     print("buried")
 
 
@@ -64,10 +64,6 @@ except ValueError:
 # 4.1
 print("Start task 4")
 flag = True
-
-
-
-
 
 while flag:
     try:
@@ -173,6 +169,6 @@ while flag:
             print("Вы ввели не число. Введите число.\n")
         else:
             print("Вы ввели какую то дичь.\n")
-    except Exception:
+    except:
         print()
         flag = False
