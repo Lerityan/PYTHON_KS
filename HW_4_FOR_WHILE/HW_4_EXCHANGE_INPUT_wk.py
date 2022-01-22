@@ -35,7 +35,7 @@ try:
     gbp.to_self_output(rub.to_usd(amount))
     cny.to_self_output(rub.to_usd(amount))
 #    buried()
-except ValueError:
+except:
     print("You failed Task 2\n")
 
 # 3.1
@@ -99,9 +99,9 @@ while flag:
             print("Вы ввели не число. Введите число.\n")
         else:
             print("Вы ввели какую то дичь.\n")
-    except KeyboardInterrupt:
+    except:
         print()
-        flag = False
+        break
 
 # 3.2
 nf_gbp_c = 0.74
@@ -173,6 +173,6 @@ while flag:
             print("Вы ввели не число. Введите число.\n")
         else:
             print("Вы ввели какую то дичь.\n")
-    except KeyboardInterrupt:
+    except Exception:
         print()
         flag = False
