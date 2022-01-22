@@ -18,8 +18,5 @@ class Currency(object):
     def to_usd_output(self, amount):
         print("Конвертированная сумма в USD =", "%.2f" % self.to_usd(amount))
 
-
-class Exchange:
-
     def convert(Cur1, Cur2, amount):
         return Cur2.from_usd(Cur1.to_usd(amount))

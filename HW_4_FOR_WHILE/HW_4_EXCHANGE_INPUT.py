@@ -1,6 +1,5 @@
 import sys
-
-from Exchange_tools import Currency, Exchange
+from Exchange_tools import Currency
 import keyboard
 
 
@@ -8,7 +7,6 @@ def buried():
     for blank in range(10):
         print("\n")
     print("buried")
-
 
 
 gbp = Currency("GBP", 0.74)
@@ -22,9 +20,9 @@ try:
     amount = int(input("Start task 1: input int\n"))
     print("Ты ввел", amount, eur.name)
     eur.to_usd_output(amount)
-    buried()
+#    buried()
 except ValueError:
-    print("You failed Task 1")
+    print("You failed Task 1\n")
 
 2
 try:
@@ -35,9 +33,9 @@ try:
     chf.to_self_output(eur.to_usd(amount))
     gbp.to_self_output(eur.to_usd(amount))
     cny.to_self_output(eur.to_usd(amount))
-    buried()
+#    buried()
 except ValueError:
-    print("You failed Task 2")
+    print("You failed Task 2\n")
 
 # 3.1
 try:
@@ -51,13 +49,13 @@ try:
         gbp.to_self_output(eur.to_usd(amount))
         cny.to_self_output(eur.to_usd(amount))
     else:
-        print("Введите положительное число.")
+        print("Введите положительное число.\n")
 except ValueError:
     if buf_inp == "":
-        print("Вы ввели пустое поле. Введите число.")
+        print("Вы ввели пустое поле. Введите число.\n")
     else:
-        print("Вы ввели не число. Введите число.")
-buried()
+        print("Вы ввели не число. Введите число.\n")
+#buried()
 
 # 4.1
 print("Start task 4")
@@ -68,7 +66,9 @@ def keybreake():
     global flag
     flag = False
     print("Stop_run")
-   #sys.exit(0)
+    # sys.exit(0)
+
+
 
 
 keyboard.add_hotkey("Ctrl + c", keybreake)
@@ -90,16 +90,16 @@ while flag:
             elif str.lower(buf_inp1) == "cny":
                 cny.to_self_output(eur.to_usd(amount))
             elif str.lower(buf_inp1) == "":
-                print("Но не указали название валюты")
+                print("Но не указали название валюты\n")
             else:
-                print("Мы не можем конвертировать эту валюту")
+                print("Мы не можем конвертировать эту валюту\n")
         else:
-            print("Введите положительное число.")
+            print("Введите положительное число.\n")
     except ValueError:
         if buf_inp2 == "":
-            print("Вы ввели пустое поле. Введите число.")
+            print("Вы ввели пустое поле. Введите число.\n")
         else:
-            print("Вы ввели не число. Введите число.")
+            print("Вы ввели не число. Введите число.\n")
     except KeyboardInterrupt:
         print()
 
@@ -116,7 +116,6 @@ nf_usd_n = "USD"
 nf_cny_n = "CNY"
 nf_chf_n = "CHF"
 
-
 try:
     buf_inp = input("Start task 3: input int\n")
     amount = int(buf_inp)
@@ -129,13 +128,13 @@ try:
         print("Конвертированная сумма в", nf_chf_n, "=", "%.2f" % (amount / nf_eur_c * nf_chf_c))
 
     else:
-        print("Введите положительное число.")
+        print("Введите положительное число.\n")
 except ValueError:
     if buf_inp == "":
-        print("Вы ввели пустое поле. Введите число.")
+        print("Вы ввели пустое поле. Введите число.\n")
     else:
-        print("Вы ввели не число. Введите число.")
-buried()
+        print("Вы ввели не число. Введите число.\n")
+#buried()
 
 # 4.2
 
@@ -160,15 +159,15 @@ while flag:
             elif str.lower(buf_inp1) == "cny":
                 print("Конвертированная сумма в", nf_cny_n, "=", "%.2f" % (amount / nf_eur_c * nf_cny_c))
             elif str.lower(buf_inp1) == "":
-                print("Но не указали название валюты")
+                print("Но не указали название валюты\n")
             else:
-                print("Мы не можем конвертировать эту валюту")
+                print("Мы не можем конвертировать эту валюту\n")
         else:
-            print("Введите положительное число.")
+            print("Введите положительное число.\n")
     except ValueError:
         if buf_inp2 == "":
-            print("Вы ввели пустое поле. Введите число.")
+            print("Вы ввели пустое поле. Введите число.\n")
         else:
-            print("Вы ввели не число. Введите число.")
+            print("Вы ввели не число. Введите число.\n")
     except KeyboardInterrupt:
         print()
