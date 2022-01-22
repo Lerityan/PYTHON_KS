@@ -10,6 +10,7 @@ def buried():
     print("buried")
 
 
+
 gbp = Currency("GBP", 0.74)
 usd = Currency("USD", 1)
 cny = Currency("CNY", 6.34)
@@ -67,7 +68,7 @@ def keybreake():
     global flag
     flag = False
     print("Stop_run")
-    # sys.exit()
+   #sys.exit(0)
 
 
 keyboard.add_hotkey("Ctrl + c", keybreake)
@@ -99,6 +100,8 @@ while flag:
             print("Вы ввели пустое поле. Введите число.")
         else:
             print("Вы ввели не число. Введите число.")
+    except KeyboardInterrupt:
+        print()
 
 # 3.2
 nf_gbp_c = 0.74
@@ -112,6 +115,7 @@ nf_eur_n = "EUR"
 nf_usd_n = "USD"
 nf_cny_n = "CNY"
 nf_chf_n = "CHF"
+
 
 try:
     buf_inp = input("Start task 3: input int\n")
@@ -138,6 +142,7 @@ buried()
 flag = True
 
 while flag:
+
     try:
         buf_inp1 = input("Выберите валюту из ['USD','EUR','CHF','GBP','CNY']\n")
         buf_inp2 = input("Введите сумму\n")
@@ -165,3 +170,5 @@ while flag:
             print("Вы ввели пустое поле. Введите число.")
         else:
             print("Вы ввели не число. Введите число.")
+    except KeyboardInterrupt:
+        print()
