@@ -1,4 +1,5 @@
 import sys
+import re
 from Exchange_tools import Currency
 import keyboard
 
@@ -53,9 +54,12 @@ try:
 except ValueError:
     if buf_inp == "":
         print("Вы ввели пустое поле. Введите число.\n")
-    else:
+    elif re.findall(r'[a-zA-Zа-яА-ЯёЁ]', buf_inp) != []:
         print("Вы ввели не число. Введите число.\n")
-#buried()
+    else:
+        print("Вы ввели какую то дичь.\n")
+
+# buried()
 
 # 4.1
 print("Start task 4")
@@ -67,8 +71,6 @@ def keybreake():
     flag = False
     print("Stop_run")
     # sys.exit(0)
-
-
 
 
 keyboard.add_hotkey("Ctrl + c", keybreake)
@@ -98,8 +100,10 @@ while flag:
     except ValueError:
         if buf_inp2 == "":
             print("Вы ввели пустое поле. Введите число.\n")
-        else:
+        elif re.findall(r'[a-zA-Zа-яА-ЯёЁ]', buf_inp2) != []:
             print("Вы ввели не число. Введите число.\n")
+        else:
+            print("Вы ввели какую то дичь.\n")
     except KeyboardInterrupt:
         print()
 
@@ -132,9 +136,11 @@ try:
 except ValueError:
     if buf_inp == "":
         print("Вы ввели пустое поле. Введите число.\n")
-    else:
+    elif re.findall(r'[a-zA-Zа-яА-ЯёЁ]', buf_inp) != []:
         print("Вы ввели не число. Введите число.\n")
-#buried()
+    else:
+        print("Вы ввели какую то дичь.\n")
+# buried()
 
 # 4.2
 
@@ -167,7 +173,9 @@ while flag:
     except ValueError:
         if buf_inp2 == "":
             print("Вы ввели пустое поле. Введите число.\n")
-        else:
+        elif re.findall(r'[a-zA-Zа-яА-ЯёЁ]', buf_inp2) != []:
             print("Вы ввели не число. Введите число.\n")
+        else:
+            print("Вы ввели какую то дичь.\n")
     except KeyboardInterrupt:
         print()
