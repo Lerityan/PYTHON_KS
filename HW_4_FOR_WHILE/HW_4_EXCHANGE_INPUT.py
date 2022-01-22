@@ -29,11 +29,11 @@ except ValueError:
 try:
     amount = int(input("Start task 2: input int\n"))
     print("Ты ввел", amount, eur.name)
-    usd.to_self_output(Exchange.convert(eur, usd, amount))
-    eur.to_self_output(Exchange.convert(eur, usd, amount))
-    chf.to_self_output(Exchange.convert(eur, usd, amount))
-    gbp.to_self_output(Exchange.convert(eur, usd, amount))
-    cny.to_self_output(Exchange.convert(eur, usd, amount))
+    usd.to_self_output(eur.to_usd(amount))
+    eur.to_self_output(eur.to_usd(amount))
+    chf.to_self_output(eur.to_usd(amount))
+    gbp.to_self_output(eur.to_usd(amount))
+    cny.to_self_output(eur.to_usd(amount))
     buried()
 except ValueError:
     print("You failed Task 2")
@@ -44,11 +44,11 @@ try:
     amount = int(buf_inp)
     if amount >= 0:
         print("Ты ввел", amount, eur.name)
-        usd.to_self_output(Exchange.convert(eur, usd, amount))
-        eur.to_self_output(Exchange.convert(eur, usd, amount))
-        chf.to_self_output(Exchange.convert(eur, usd, amount))
-        gbp.to_self_output(Exchange.convert(eur, usd, amount))
-        cny.to_self_output(Exchange.convert(eur, usd, amount))
+        usd.to_self_output(eur.to_usd(amount))
+        eur.to_self_output(eur.to_usd(amount))
+        chf.to_self_output(eur.to_usd(amount))
+        gbp.to_self_output(eur.to_usd(amount))
+        cny.to_self_output(eur.to_usd(amount))
     else:
         print("Введите положительное число.")
 except ValueError:
@@ -79,15 +79,15 @@ while flag:
         if amount >= 0:
             print("Вы ввели сумму", amount, "и валюту", buf_inp1)
             if str.lower(buf_inp1) == "usd":
-                usd.to_self_output(Exchange.convert(eur, usd, amount))
+                usd.to_self_output(eur.to_usd(amount))
             elif str.lower(buf_inp1) == "eur":
-                eur.to_self_output(Exchange.convert(eur, usd, amount))
+                eur.to_self_output(eur.to_usd(amount))
             elif str.lower(buf_inp1) == "chf":
-                chf.to_self_output(Exchange.convert(eur, usd, amount))
+                chf.to_self_output(eur.to_usd(amount))
             elif str.lower(buf_inp1) == "gbp":
-                gbp.to_self_output(Exchange.convert(eur, usd, amount))
+                gbp.to_self_output(eur.to_usd(amount))
             elif str.lower(buf_inp1) == "cny":
-                cny.to_self_output(Exchange.convert(eur, usd, amount))
+                cny.to_self_output(eur.to_usd(amount))
             elif str.lower(buf_inp1) == "":
                 print("Но не указали название валюты")
             else:
@@ -131,6 +131,7 @@ except ValueError:
         print("Вы ввели пустое поле. Введите число.")
     else:
         print("Вы ввели не число. Введите число.")
+buried()
 
 # 4.2
 
