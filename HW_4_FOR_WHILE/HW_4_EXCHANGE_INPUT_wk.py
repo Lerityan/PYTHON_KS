@@ -14,12 +14,13 @@ usd = Currency("USD", 1)
 cny = Currency("CNY", 6.34)
 eur = Currency("EUR", 0.86)
 chf = Currency("CHF", 0.91)
+rub = Currency("RUB", 75)
 
 # 1
 try:
     amount = int(input("Start task 1: input int\n"))
-    print("Ты ввел", amount, eur.name)
-    eur.to_usd_output(amount)
+    print("Ты ввел", amount, rub.name)
+    rub.to_usd_output(amount)
 #    buried()
 except ValueError:
     print("You failed Task 1\n")
@@ -28,11 +29,11 @@ except ValueError:
 try:
     amount = int(input("Start task 2: input int\n"))
     print("Ты ввел", amount, eur.name)
-    usd.to_self_output(eur.to_usd(amount))
-    eur.to_self_output(eur.to_usd(amount))
-    chf.to_self_output(eur.to_usd(amount))
-    gbp.to_self_output(eur.to_usd(amount))
-    cny.to_self_output(eur.to_usd(amount))
+    usd.to_self_output(rub.to_usd(amount))
+    eur.to_self_output(rub.to_usd(amount))
+    chf.to_self_output(rub.to_usd(amount))
+    gbp.to_self_output(rub.to_usd(amount))
+    cny.to_self_output(rub.to_usd(amount))
 #    buried()
 except ValueError:
     print("You failed Task 2\n")
@@ -42,12 +43,12 @@ try:
     buf_inp = input("Start task 3: input int\n")
     amount = int(buf_inp)
     if amount >= 0:
-        print("Ты ввел", amount, eur.name)
-        usd.to_self_output(eur.to_usd(amount))
-        eur.to_self_output(eur.to_usd(amount))
-        chf.to_self_output(eur.to_usd(amount))
-        gbp.to_self_output(eur.to_usd(amount))
-        cny.to_self_output(eur.to_usd(amount))
+        print("Ты ввел", amount, rub.name)
+        usd.to_self_output(rub.to_usd(amount))
+        eur.to_self_output(rub.to_usd(amount))
+        chf.to_self_output(rub.to_usd(amount))
+        gbp.to_self_output(rub.to_usd(amount))
+        cny.to_self_output(rub.to_usd(amount))
     else:
         print("Введите положительное число.\n")
 except ValueError:
@@ -76,15 +77,15 @@ while flag:
         if amount >= 0:
             print("Вы ввели сумму", amount, "и валюту", buf_inp1)
             if str.lower(buf_inp1) == "usd":
-                usd.to_self_output(eur.to_usd(amount))
+                usd.to_self_output(rub.to_usd(amount))
             elif str.lower(buf_inp1) == "eur":
-                eur.to_self_output(eur.to_usd(amount))
+                eur.to_self_output(rub.to_usd(amount))
             elif str.lower(buf_inp1) == "chf":
-                chf.to_self_output(eur.to_usd(amount))
+                chf.to_self_output(rub.to_usd(amount))
             elif str.lower(buf_inp1) == "gbp":
-                gbp.to_self_output(eur.to_usd(amount))
+                gbp.to_self_output(rub.to_usd(amount))
             elif str.lower(buf_inp1) == "cny":
-                cny.to_self_output(eur.to_usd(amount))
+                cny.to_self_output(rub.to_usd(amount))
             elif str.lower(buf_inp1) == "":
                 print("Но не указали название валюты\n")
             else:
