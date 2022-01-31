@@ -164,9 +164,11 @@ db = Database()
 # time.sleep(1)
 
 while True:
+    time.sleep(0.5)
     cls()
     read = read_int("1. Create new user\n2. Find user\n3. Show database\n4. Exit\n", 4)
     if read == 1:
+        time.sleep(0.5)
         cls()
         print("New User Creating")
         create_email = input("Input email\n")
@@ -187,6 +189,7 @@ while True:
                 read = read_int("1. By index\n2. By email\n3. Back\n", 3)
                 if read == 1:
                     while True:
+                        time.sleep(0.5)
                         cls()
                         print("FIND USER BY INDEX")
                         read = read_index("Input Index\n", len(db.user) - 1)
@@ -195,6 +198,7 @@ while True:
                         while True:
                             read = read_int("1. Update user\n2. Delete user\n3. Back\n", 3)
                             if read == 1:
+                                time.sleep(0.5)
                                 cls()
                                 print(db.find_user_by_index(int(index)))
                                 print("UPDATE USER")
@@ -218,7 +222,7 @@ while True:
                         time.sleep(0.5)
                         break
                 elif read == 2:
-                    time.sleep(0.1)
+                    time.sleep(0.5)
                     cls()
                     print("FIND USER BY EMAIL")
                     buff_inp = input("Input email\n")
@@ -268,6 +272,7 @@ while True:
             print("Database is empty")
 
     elif read == 3:
+        time.sleep(0.5)
         cls()
         print("DATABASE")
         db.show_database()
