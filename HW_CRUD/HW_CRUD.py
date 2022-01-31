@@ -1,4 +1,4 @@
-# накидать надо на диктах
+
 from Users import Users
 from DataBase import Database
 import time
@@ -213,7 +213,9 @@ while True:
                                 time.sleep(0.5)
                                 break
                             elif read == 3:
+                                time.sleep(0.5)
                                 break
+                        time.sleep(0.5)
                         break
                 elif read == 2:
                     time.sleep(0.1)
@@ -258,7 +260,9 @@ while True:
                         print("User not exist")
                         time.sleep(0.5)
                 elif read == 3:
+                    time.sleep(0.5)
                     break
+                time.sleep(0.5)
                 break
         else:
             print("Database is empty")
