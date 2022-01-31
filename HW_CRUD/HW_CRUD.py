@@ -1,47 +1,7 @@
-
+from Input import read_int, read_index
 from Users import Users
 from DataBase import Database
-import time
-import os
-import re
-
-
-def read_int(string, num):
-    while True:
-        buf_input = input(string)
-        if re.findall(r'\D', buf_input) == [] and buf_input != "":
-            if int(buf_input) <= num and int(buf_input) != 0:
-                return int(buf_input)
-                break
-            else:
-                print("Wrong input, try again")
-                time.sleep(1)
-                cls()
-                continue
-        else:
-            print("Wrong input, try again")
-            time.sleep(1)
-            cls()
-            continue
-
-
-def read_index(string, num):
-    while True:
-        buf_input = input(string)
-        if re.findall(r'\D', buf_input) == [] and buf_input != "":
-            if int(buf_input) <= num:
-                return int(buf_input)
-                break
-            else:
-                print("Wrong input, try again")
-                time.sleep(1)
-                cls()
-                continue
-        else:
-            print("Wrong input, try again")
-            time.sleep(1)
-            cls()
-            continue
+import time, os, argparse
 
 
 def cls():
@@ -54,9 +14,10 @@ def cls():
     # print out some text
 
 
-print("===========init database ==========")
-time.sleep(1)
-db = Database()
+parser = argparse.ArgumentParser(add_help=False)
+parser.add_argument('-h', '--help', action='store_const', const=True, default=False)
+
+
 # потонуло
 # while True:
 #     buf_input = input("1. Create new user\n2. Find user\n3. Show database\n4. Exit\n")
@@ -162,127 +123,134 @@ db = Database()
 # time.sleep(1)
 # print("=======database deleted=======")
 # time.sleep(1)
-
-while True:
-    time.sleep(0.5)
-    cls()
-    read = read_int("1. Create new user\n2. Find user\n3. Show database\n4. Exit\n", 4)
-    if read == 1:
+if parser.parse_args().help:
+    print(
+        "Session-type database.\nAfter completion of the work, the data is deleted. \nPress the numbers to select a menu item. \nThe correspondence of the input data and the field is not checked, be careful.\n")
+else:
+    print("===========init database ==========")
+    time.sleep(1)
+    db = Database()
+    while True:
         time.sleep(0.5)
         cls()
-        print("New User Creating")
-        create_email = input("Input email\n")
-        create_name = input("Input name\n")
-        create_password = input("Input password\n")
-        create_phone = input("Input phone\n")
-        buf_user = Users(create_email, create_name, create_password, create_phone)
-        db.add_user(buf_user)
-        print("...... wait ....")
-        time.sleep(0.5)
+
+        read = read_int("1. Create new user\n2. Find user\n3. Show database\n4. Exit\n", 4)
+        if read == 1:
+            time.sleep(0.5)
+            cls()
+            print("New User Creating")
+            create_email = input("Input email\n")
+            create_name = input("Input name\n")
+            create_password = input("Input password\n")
+            create_phone = input("Input phone\n")
+            buf_user = Users(create_email, create_name, create_password, create_phone)
+            db.add_user(buf_user)
+            print("...... wait ....")
+            time.sleep(0.5)
 
 
-    elif read == 2:
-        if len(db.user) != 0:
-            while True:
-                cls()
-                print("FIND USER")
-                read = read_int("1. By index\n2. By email\n3. Back\n", 3)
-                if read == 1:
-                    while True:
+        elif read == 2:
+            if len(db.user) != 0:
+                while True:
+                    cls()
+                    print("FIND USER")
+                    read = read_int("1. By index\n2. By email\n3. Back\n", 3)
+                    if read == 1:
+                        while True:
+                            time.sleep(0.5)
+                            cls()
+                            print("FIND USER BY INDEX")
+                            read = read_index("Input Index\n", len(db.user) - 1)
+                            print(db.find_user_by_index(int(read)))
+                            index = db.find_user_by_index(int(read))[0]
+                            while True:
+                                read = read_int("1. Update user\n2. Delete user\n3. Back\n", 3)
+                                if read == 1:
+                                    time.sleep(0.5)
+                                    cls()
+                                    print(db.find_user_by_index(int(index)))
+                                    print("UPDATE USER")
+                                    edit_name = input("Input name\n")
+                                    db.user[index].set_name(edit_name)
+                                    edit_password = input("Input password\n")
+                                    db.user[index].set_password(edit_password)
+                                    edit_phone = input("Input phone\n")
+                                    db.user[index].set_phone(edit_phone)
+                                    print("USER UPDATED")
+                                    time.sleep(0.5)
+                                    break
+                                elif read == 2:
+                                    db.remove_user_by_index(index)
+                                    print("USER REMOVED")
+                                    time.sleep(0.5)
+                                    break
+                                elif read == 3:
+                                    time.sleep(0.5)
+                                    break
+                            time.sleep(0.5)
+                            break
+                    elif read == 2:
                         time.sleep(0.5)
                         cls()
-                        print("FIND USER BY INDEX")
-                        read = read_index("Input Index\n", len(db.user) - 1)
-                        print(db.find_user_by_index(int(read)))
-                        index = db.find_user_by_index(int(read))[0]
-                        while True:
-                            read = read_int("1. Update user\n2. Delete user\n3. Back\n", 3)
-                            if read == 1:
-                                time.sleep(0.5)
-                                cls()
-                                print(db.find_user_by_index(int(index)))
-                                print("UPDATE USER")
-                                edit_name = input("Input name\n")
-                                db.user[index].set_name(edit_name)
-                                edit_password = input("Input password\n")
-                                db.user[index].set_password(edit_password)
-                                edit_phone = input("Input phone\n")
-                                db.user[index].set_phone(edit_phone)
-                                print("USER UPDATED")
-                                time.sleep(0.5)
-                                break
-                            elif read == 2:
-                                db.remove_user_by_index(index)
-                                print("USER REMOVED")
-                                time.sleep(0.5)
-                                break
-                            elif read == 3:
-                                time.sleep(0.5)
-                                break
-                        time.sleep(0.5)
-                        break
-                elif read == 2:
-                    time.sleep(0.5)
-                    cls()
-                    print("FIND USER BY EMAIL")
-                    buff_inp = input("Input email\n")
+                        print("FIND USER BY EMAIL")
+                        buff_inp = input("Input email\n")
 
-                    for item in db.user:
-                        if buff_inp == item.email:
-                            flag = True
+                        for item in db.user:
+                            if buff_inp == item.email:
+                                flag = True
+                                break
+                            else:
+                                flag = False
+
+                        if flag == True:
+                            print(db.find_user_by_email(buff_inp))
+                            index = db.find_user_by_email(buff_inp)[0]
+                            while True:
+                                read = read_int("1. Update user\n2. Delete user\n3. Back\n", 3)
+                                if read == 1:
+                                    cls()
+                                    print(db.find_user_by_index(int(index)))
+                                    print("UPDATE USER")
+                                    edit_name = input("Input name\n")
+                                    db.user[index].set_name(edit_name)
+                                    edit_password = input("Input password\n")
+                                    db.user[index].set_password(edit_password)
+                                    edit_phone = input("Input phone\n")
+                                    db.user[index].set_phone(edit_phone)
+                                    print("USER UPDATED")
+                                    time.sleep(0.5)
+                                    break
+                                elif read == 2:
+                                    db.remove_user_by_index(index)
+                                    print("USER REMOVED")
+                                    time.sleep(0.5)
+                                    break
+                                elif read == 3:
+                                    break
                             break
                         else:
-                            flag = False
-
-                    if flag == True:
-                        print(db.find_user_by_email(buff_inp))
-                        index = db.find_user_by_email(buff_inp)[0]
-                        while True:
-                            read = read_int("1. Update user\n2. Delete user\n3. Back\n", 3)
-                            if read == 1:
-                                cls()
-                                print(db.find_user_by_index(int(index)))
-                                print("UPDATE USER")
-                                edit_name = input("Input name\n")
-                                db.user[index].set_name(edit_name)
-                                edit_password = input("Input password\n")
-                                db.user[index].set_password(edit_password)
-                                edit_phone = input("Input phone\n")
-                                db.user[index].set_phone(edit_phone)
-                                print("USER UPDATED")
-                                time.sleep(0.5)
-                                break
-                            elif read == 2:
-                                db.remove_user_by_index(index)
-                                print("USER REMOVED")
-                                time.sleep(0.5)
-                                break
-                            elif read == 3:
-                                break
-                        break
-                    else:
-                        print("User not exist")
+                            print("User not exist")
+                            time.sleep(0.5)
+                    elif read == 3:
                         time.sleep(0.5)
-                elif read == 3:
+                        break
                     time.sleep(0.5)
                     break
-                time.sleep(0.5)
-                break
-        else:
-            print("Database is empty")
+            else:
+                print("Database is empty")
 
-    elif read == 3:
-        time.sleep(0.5)
-        cls()
-        print("DATABASE")
-        db.show_database()
-        foo = input("Press Enter to continue")
-        time.sleep(0.5)
+        elif read == 3:
+            time.sleep(0.5)
+            cls()
+            print("DATABASE")
+            db.show_database()
+            foo = input("Press Enter to continue")
+            time.sleep(0.5)
 
-    elif read == 4:
-        time.sleep(0.5)
-        break
+        elif read == 4:
+            time.sleep(0.5)
+            break
 
-cls()
-time.sleep(1)
-print("=======database deleted=======")
+    cls()
+    time.sleep(1)
+    print("=======database deleted=======")
