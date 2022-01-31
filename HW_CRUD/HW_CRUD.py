@@ -238,7 +238,7 @@ while True:
                         print(db.find_user_by_email(buff_inp))
                         index = db.find_user_by_email(buff_inp)[0]
                         while True:
-                            read = read_int("1. Update user\n2. Delete user\n3. Back", 3)
+                            read = read_int("1. Update user\n2. Delete user\n3. Back\n", 3)
                             if read == 1:
                                 cls()
                                 print(db.find_user_by_index(int(index)))
