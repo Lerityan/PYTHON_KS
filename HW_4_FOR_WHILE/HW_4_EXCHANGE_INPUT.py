@@ -104,7 +104,7 @@ while flag:
         else:
             print("Вы ввели какую то дичь.\n")
     except KeyboardInterrupt:
-        print()
+        print("catch exception")
 
 # 3.2
 nf_gbp_c = 0.74
@@ -177,4 +177,4 @@ while flag:
         else:
             print("Вы ввели какую то дичь.\n")
     except KeyboardInterrupt:
-        print()
+        print("catch exception")
