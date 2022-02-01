@@ -161,7 +161,7 @@ parser.add_argument('-h', '--help', action='store_const', const=True, default=Fa
 # time.sleep(1)
 if parser.parse_args().help:
     print(
-        "Session-type database.\nAfter completion of the work, the data is deleted. \nPress the numbers to select a menu item. \nThe correspondence of the input data and the field is not checked, be careful.\n")
+        "Session-type database. 0.0.1\nAfter completion of the work, the data is deleted. \nPress the numbers to select a menu item. \nThe correspondence of the input data and the field is not checked, be careful.\n\n\nIn next version - checking input type by regexp, file reading. ")
 else:
     print("===========init database ==========")
     time.sleep(1)
