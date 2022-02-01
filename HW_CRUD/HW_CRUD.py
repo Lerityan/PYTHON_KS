@@ -2,6 +2,7 @@ from Users import Users
 from DataBase import Database
 import time, os, argparse, re
 
+
 def read_int(string, num):
     while True:
         buf_input = input(string)
@@ -39,6 +40,7 @@ def read_index(string, num):
             cls()
             continue
 
+
 def cls():
     # for mac and linux(here, os.name is 'posix')
     if os.name == 'posix':
@@ -51,7 +53,6 @@ def cls():
 
 parser = argparse.ArgumentParser(add_help=False)
 parser.add_argument('-h', '--help', action='store_const', const=True, default=False)
-
 
 # потонуло
 # while True:
@@ -278,6 +279,7 @@ else:
             time.sleep(0.5)
             cls()
             print("DATABASE")
+            print("INDEX ", "'EMAIL'", "'NAME'", "'PASSWORD'", "'PHONE'")
             db.show_database()
             foo = input("Press Enter to continue")
             time.sleep(0.5)

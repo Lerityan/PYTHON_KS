@@ -24,7 +24,7 @@ class Database(object):
 
     def show_database(self):
         for item in self.user:
-            print("Element #", self.find_user_by_email(item.email))
+            print(self.find_user_by_email(item.email))
 
     def find_user_by_email(self, find_email):
         for item in self.user:
